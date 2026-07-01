@@ -1,25 +1,27 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tommaso Salza | Personal Page</title>
+    <title>Tommaso Salza | Retro Profile</title>
     <style>
       :root {
-        --bg: #07111f;
-        --panel: rgba(255, 255, 255, 0.08);
-        --text: #f5f7fb;
-        --muted: #b6c2d1;
-        --accent: #7dd3fc;
-        --accent-2: #a78bfa;
+        --bg: #11110f;
+        --panel: #1e1a16;
+        --text: #f6e8c8;
+        --muted: #cbb99d;
+        --accent: #ffb347;
+        --accent-2: #7bdff2;
       }
 
       * { box-sizing: border-box; }
       body {
         margin: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Courier New", Courier, monospace;
         color: var(--text);
-        background: linear-gradient(135deg, var(--bg), #14233b 55%, #1f3a5f);
+        background:
+          radial-gradient(circle at top left, rgba(255,179,71,0.14), transparent 28%),
+          linear-gradient(135deg, #0d0b08 0%, #1a1713 100%);
         min-height: 100vh;
         display: grid;
         place-items: center;
@@ -28,27 +30,64 @@
 
       .card {
         width: min(860px, 100%);
-        background: var(--panel);
-        backdrop-filter: blur(14px);
-        border: 1px solid rgba(255,255,255,0.14);
+        background: linear-gradient(145deg, rgba(30,26,22,0.95), rgba(18,16,14,0.96));
+        border: 3px solid var(--accent);
         border-radius: 24px;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.30);
+        box-shadow: 0 0 0 4px rgba(255,179,71,0.18), 0 18px 45px rgba(0,0,0,0.45);
         overflow: hidden;
+        position: relative;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: repeating-linear-gradient(
+          180deg,
+          rgba(255,255,255,0.03) 0px,
+          rgba(255,255,255,0.03) 1px,
+          transparent 1px,
+          transparent 6px
+        );
+        pointer-events: none;
+        mix-blend-mode: screen;
+        opacity: 0.7;
+      }
+
+      .card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(255,255,255,0.05), transparent 20%, transparent 80%, rgba(0,0,0,0.18));
+        pointer-events: none;
+        border-radius: 24px;
+        animation: crtGlow 2.8s ease-in-out infinite alternate;
+      }
+
+      @keyframes crtGlow {
+        0% {
+          box-shadow: inset 0 0 0 transparent;
+          background: linear-gradient(180deg, rgba(255,255,255,0.05), transparent 20%, transparent 80%, rgba(0,0,0,0.18));
+        }
+        100% {
+          box-shadow: inset 0 0 24px rgba(255, 196, 0, 0.18);
+          background: linear-gradient(180deg, rgba(255, 220, 110, 0.08), transparent 18%, transparent 82%, rgba(255, 196, 0, 0.12));
+        }
       }
 
       .hero {
-        padding: 40px 40px 24px;
-        background: linear-gradient(90deg, rgba(125,211,252,0.18), rgba(167,139,250,0.14));
+        padding: 36px 36px 24px;
+        border-bottom: 2px dashed rgba(255,179,71,0.35);
       }
 
       .eyebrow {
         display: inline-block;
-        padding: 6px 12px;
+        padding: 6px 10px;
+        border: 1px solid var(--accent);
         border-radius: 999px;
-        background: rgba(255,255,255,0.12);
         color: var(--accent);
-        font-size: 0.85rem;
-        letter-spacing: 0.08em;
+        font-size: 0.8rem;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
         margin-bottom: 14px;
       }
@@ -56,33 +95,37 @@
       h1 {
         margin: 0 0 10px;
         font-size: clamp(2rem, 4vw, 2.8rem);
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
       }
 
       .subtitle {
         margin: 0;
-        font-size: 1.05rem;
+        font-size: 1rem;
         color: var(--muted);
-        line-height: 1.6;
+        line-height: 1.7;
         max-width: 680px;
       }
 
       .content {
-        padding: 0 40px 40px;
+        padding: 24px 36px 36px;
         display: grid;
-        gap: 20px;
+        gap: 18px;
       }
 
       .section {
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.08);
-        border-radius: 18px;
-        padding: 20px 22px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255,179,71,0.2);
+        border-radius: 16px;
+        padding: 18px 20px;
       }
 
       h2 {
         margin: 0 0 10px;
-        font-size: 1.1rem;
-        color: var(--accent);
+        font-size: 1rem;
+        color: var(--accent-2);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
       }
 
       p {
@@ -95,50 +138,50 @@
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-top: 12px;
+        margin-top: 10px;
       }
 
       .tags span {
-        padding: 8px 12px;
+        padding: 8px 10px;
+        border: 1px solid rgba(123,223,242,0.35);
         border-radius: 999px;
-        background: rgba(125,211,252,0.14);
+        background: rgba(123,223,242,0.08);
         color: var(--text);
-        font-size: 0.95rem;
+        font-size: 0.92rem;
       }
 
       @media (max-width: 600px) {
         .hero, .content { padding-left: 20px; padding-right: 20px; }
-        .hero { padding-top: 28px; }
       }
     </style>
   </head>
   <body>
     <main class="card">
       <section class="hero">
-        <div class="eyebrow">Personal page</div>
+        <div class="eyebrow">Retro profile</div>
         <h1>Tommaso Salza</h1>
         <p class="subtitle">
-          Sono un appassionato di tecnologia, design e creatività digitale. Mi piace costruire esperienze semplici, eleganti e funzionali, sia online che fuori.
+          I am a student with a passion for technology, cloud systems, and digital innovation. I enjoy learning new skills and building strong foundations for the future.
         </p>
       </section>
 
       <section class="content">
         <article class="section">
-          <h2>Chi sono</h2>
+          <h2>About me</h2>
           <p>
-            Mi piace esplorare nuove idee, imparare rapidamente e trasformare concetti in soluzioni concrete. Credo che la semplicità sia la chiave per creare qualcosa di davvero memorabile.
+            My name is Tommaso Salza. I study at ITS ICT in Turin, Piedmont, and I am training to become an AWS Cloud Architect.
           </p>
         </article>
 
         <article class="section">
-          <h2>Interessi</h2>
+          <h2>Interests</h2>
           <div class="tags">
-            <span>Web design</span>
-            <span>Programmazione</span>
-            <span>Musica</span>
-            <span>Fotografia</span>
-            <span>Viaggi</span>
-            <span>Gaming</span>
+            <span>Cloud Computing</span>
+            <span>AWS</span>
+            <span>Networking</span>
+            <span>Cybersecurity</span>
+            <span>Innovation</span>
+            <span>Technology</span>
           </div>
         </article>
       </section>
